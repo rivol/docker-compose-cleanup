@@ -19,9 +19,9 @@ script: tox
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
-  user: rivol
+  user: rivolaks
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: "qjZV0oLMnKoPSAo5JvaD3Hr4MByjUjF3PEc4IzCrzC13dces7G0QSXTy6v5kLaXV+v0LLtlk6r9V4/j/kRnIPUn3w5W3OrZrrwSS9kTbpgBZX40E5IS3aoIM9HlO97sa0Jj0XOgj3zlD8oIxrxaLvRdLlniL5o1UFTivOwmHues9d1/n1o+k9b11iwd0OujDmYIjpsiMluboiGqe0e6Y0OPvIe5evFguMt/hx/QU3Q5CP1FIVVehJm3SbyfpwASQeZDcRgLuUwlnys4C60Vk8aslLv8gg+L1dSKkKZUKzOv63pfJIi5s1vqp2sB/M4nlDBk9Lad9jHm7cy0/qwEsIQDgEHpnwhDWDRILPrX2Pv4MItCn1aI/MBDpiBj8Yhnb+Hp/geWbWwETR7pSH30clmeD2CKO2PyKKZd1zGbTSXki/PYkfeMnGFoLBv5b0QlQjCeB+gwnoOeH+3OR/mekPCKE32fiU/FghG36ZZx+F8sdIwTGnvIIRfVSQqS4iLWwuFYWxBL7J95jZPVAp7UYd+lYlxQNv4mE0wSTKGnMO6DxXtPqhtMTptgPIh3hcHKOO66oMqdxLzKgrQHqx5CwHnqCkczx+OUGRLfAJV3VV2HWKiOTvgAXHogHWTVM2FDiaV2ubyOqu3mphp49GUygUflauth0EeCl971y9EPAdK4="
   on:
     tags: true
     repo: rivol/docker-compose-cleanup
