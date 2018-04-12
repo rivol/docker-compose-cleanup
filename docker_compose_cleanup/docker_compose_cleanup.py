@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 import docker
+import requests
 
 
 def clean():
@@ -9,6 +10,12 @@ def clean():
     imgs_by_project = defaultdict(list)
     tags_by_project = defaultdict(list)
     imgs_without_tags = []
+
+    try:
+        client.ping()
+    except (requests.ConnectionError, docker.errors.APIError):
+        print("Couldn't connect to Docker!")
+        return
 
     # Go through all the images and group them by project (and additionally by tag, though we don't use that)
     for img in client.images.list():
