@@ -7,7 +7,6 @@
 import unittest
 from click.testing import CliRunner
 
-from docker_compose_cleanup import docker_compose_cleanup
 from docker_compose_cleanup import cli
 
 
@@ -28,7 +27,8 @@ class TestDocker_compose_cleanup(unittest.TestCase):
 
         help_result = runner.invoke(cli.main, ['--help'])
         assert help_result.exit_code == 0
-        assert '--help  Show this message and exit.' in help_result.output
+        assert '--version  Show the version and exit.' in help_result.output
+        assert '--help     Show this message and exit.' in help_result.output
 
         help_result = runner.invoke(cli.main, ['remove'])
         assert help_result.exit_code == 2

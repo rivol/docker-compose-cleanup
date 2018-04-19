@@ -7,6 +7,7 @@ import click
 
 
 @click.command()
+@click.version_option()
 def main():
     from .docker_compose_cleanup import clean
     clean()
