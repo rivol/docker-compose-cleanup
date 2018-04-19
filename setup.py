@@ -13,6 +13,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'Click>=6.0,<7',
+    'colorama>=0.3.9,<1',
     'docker>=2.6,<3',
 ]
 setup_requirements = []

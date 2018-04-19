@@ -1,10 +1,17 @@
 from collections import defaultdict
 
+import colorama
 import docker
 import requests
 
 
+Style_Heading = colorama.Style.BRIGHT
+Style_Normal = colorama.Style.NORMAL
+Style_Error = colorama.Fore.RED
+
+
 def clean():
+    colorama.init()
     client = docker.from_env()
 
     imgs_by_project = defaultdict(list)
@@ -14,7 +21,7 @@ def clean():
     try:
         client.ping()
     except (requests.ConnectionError, docker.errors.APIError):
-        print("Couldn't connect to Docker!")
+        print(Style_Error + "Couldn't connect to Docker!")
         return
 
     # Go through all the images and group them by project (and additionally by tag, though we don't use that)
@@ -33,12 +40,12 @@ def clean():
 
     # Print out images that don't have any tags. Those are the dangling ones that 'docker image prune' cleans up.
     if imgs_without_tags:
-        print("Images without tags:")
+        print(Style_Heading + "Images without tags:" + Style_Normal)
         print("docker image rm %s" % ' '.join(img.short_id for img in imgs_without_tags))
     # Now the projects
-    print("Project images:")
+    print(Style_Heading + "Project images:" + Style_Normal)
     for project, tags in sorted(tags_by_project.items()):
-        print(project)
+        print(Style_Heading + project + Style_Normal)
         print("docker image rm %s" % ' '.join(sorted(tags)))
 
 
